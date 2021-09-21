@@ -1,0 +1,45 @@
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+ 
+}
+
+
+
+.hero { 
+  position: relative; 
+  height: 100vh;
+  background-size: cover;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  background-image: url('http://localhost:3000/background.jpg');
+  
+ z-index: -1;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.1;
+}
+.fontt{
+  font-size: xx-large;
+}
+.font30{
+  font-size: 30;
+}
+.logo{
+  height: 80px;
+  border-radius: 10px;
+}
+@media (max-width:800px) {
+  .logo{
+    height: 50px;
+    border-radius: 10px;
+  }
+}
