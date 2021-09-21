@@ -51,7 +51,12 @@ export const SignUp = () => {
             return setLoading(false);
         }
         try {
-            await axios.post("/auth/sign-up", values);
+            await axios.post("/auth/sign-up", values, {
+
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
             setIsSucceeded(true);
         } catch (err) {
             setErr(err.response.data);

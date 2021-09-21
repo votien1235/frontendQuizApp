@@ -50,7 +50,7 @@ const Profile = () => {
             });
             setValues({
                 ...values,
-                photoUrl: "http://localhost:5000" + res.data.filePath
+                photoUrl: "https://enigmatic-taiga-69356.herokuapp.com" + res.data.filePath
             })
         } catch (err) {
             console.log(err)
