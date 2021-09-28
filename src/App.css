@@ -19,8 +19,7 @@
   content: "";
   position: absolute;
   top: 0px;
-  background-image: url('http://localhost:3000/background.jpg');
-  
+  background-image: url('https://i.imgur.com/Ocp2A1U.jpg./background.jpg');
  z-index: -1;
   right: 0px;
   bottom: 0px;
@@ -32,14 +31,4 @@
 }
 .font30{
   font-size: 30;
-}
-.logo{
-  height: 80px;
-  border-radius: 10px;
-}
-@media (max-width:800px) {
-  .logo{
-    height: 50px;
-    border-radius: 10px;
-  }
 }

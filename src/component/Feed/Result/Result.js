@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "./Result.css";
 import axios from "../../../utils/axios";
 
-const Result = ({ user, score, authQuiz, setAuthQuiz }) => {
+const Result = ({ user, score, authQuiz, setAuthQuiz, setHighScore }) => {
     const history = useHistory();
 
     useEffect(() => {
@@ -18,6 +18,7 @@ const Result = ({ user, score, authQuiz, setAuthQuiz }) => {
         event.preventDefault();
         if (score > user.highestScore) {
             await axios.put("/auth/me/uploadhighscore", { highestScore: `${score}` });
+            setHighScore(score);
             setAuthQuiz(false)
         } else { setAuthQuiz(false) }
 

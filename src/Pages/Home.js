@@ -25,13 +25,13 @@ export const Home = () => {
             <Navbar expand="lg">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
-                        <img src="./logoquiz.png" alt="" className="logo" />
+                        <img src="./logoquiz.png" alt="" style={{ height: 50, borderRadius: 10 }} />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto" >
-                            <Nav.Link style={{ margin: "inherit" }} as={Link} to="/auth/sign-in">Sign in</Nav.Link>
-                            <Nav.Link style={{ margin: "inherit" }} as={Link} to="/auth/sign-up">Sign up</Nav.Link>
+                            <Nav.Link style={{ margin: "inherit", border: 2 }} as={Link} to="/auth/sign-in">Sign in</Nav.Link>
+                            <Nav.Link style={{ margin: "inherit", border: 2 }} as={Link} to="/auth/sign-up">Sign up</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

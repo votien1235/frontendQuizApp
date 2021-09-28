@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Navbar, Container, Nav, } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import authCtx from "../context/auth";
 import Profile from "../component/Profile";
@@ -12,11 +12,15 @@ import Result from "../component/Feed/Result/Result";
 import axios from "axios";
 
 
+
 export const Main = () => {
     const history = useHistory();
     const { authUser } = useContext(authCtx);
     const [questions, setQuestions] = useState();
     const [score, setScore] = useState(0)
+
+    const [highScore, setHighScore] = useState(0);
+
     const [authQuiz, setAuthQuiz] = useState(false)
     useEffect(() => {
         if (!authUser) {
@@ -25,6 +29,9 @@ export const Main = () => {
     }, [history, authUser]);
     if (!authUser) {
         return null
+    }
+    if (authUser.highestScore > 0 && authUser.highestScore > highScore) {
+        setHighScore(authUser.highestScore)
     }
 
     const fetchQuestions = async (category, difficulty) => {
@@ -37,7 +44,11 @@ export const Main = () => {
     };
 
 
-
+    const handleLogOut = () => {
+        localStorage.clear();
+        history.push("/");
+        window.location.reload();
+    }
 
     return (
         <div className="hero" >
@@ -48,9 +59,14 @@ export const Main = () => {
                             <img src="./logoquiz.png" alt="" style={{ height: 50, borderRadius: 10 }} />
                         </Navbar.Brand>
 
-                        <Nav className="ms-auto" as={Link} to="/profile">
-                            <Avatar size="lg" src={authUser.photoUrl} />
-                        </Nav>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="ms-auto" >
+                                <Nav.Link className="ms-auto d-flex flex-row justify-content-center" as={Link} to="/profile"><Avatar size="lg" src={authUser.AphotoUrl} /></Nav.Link>
+                                <Nav.Link > <button onClick={handleLogOut} className="btn btn-outline-danger m-auto" style={{ textDecoration: "none" }}>Log Out</button>p</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                       
                     </Container>
                 </Navbar>
             </div>
@@ -61,6 +77,7 @@ export const Main = () => {
                         fetchQuestions={fetchQuestions}
                         authQuiz={authQuiz}
                         setAuthQuiz={setAuthQuiz}
+                        highScore={highScore}
                     />
                 </Route>
                 <Route path="/quiz" >
@@ -76,7 +93,7 @@ export const Main = () => {
                 </Route>
                 <Route path="/result" >
                     <Result user={authUser} score={score} authQuiz={authQuiz}
-                        setAuthQuiz={setAuthQuiz} />
+                        setAuthQuiz={setAuthQuiz} highScore={highScore} setHighScore={setHighScore} />
                 </Route>
             </Switch>
 

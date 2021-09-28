@@ -6,7 +6,7 @@ import { Alert } from 'react-bootstrap'
 import Categories from "../../../Data/Categories";
 import "./HomeQuiz.css";
 
-const HomeQuiz = ({ user, fetchQuestions, setAuthQuiz, authQuiz }) => {
+const HomeQuiz = ({ user, fetchQuestions, setAuthQuiz, highScore }) => {
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [error, setError] = useState(false);
@@ -36,7 +36,7 @@ const HomeQuiz = ({ user, fetchQuestions, setAuthQuiz, authQuiz }) => {
                     <div className="settings__select">
                         <div className="nameScore">
                             <div>Wellcome!!!!!</div>
-                            <div>High score: {user.highestScore ? user.highestScore : 0}</div>
+                            <div>High score: {highScore}</div>
                         </div>
                         {error && <Alert variant="danger" style={{ textAlign: "center" }}>Please fill the all Fields</Alert>}
                         <TextField

@@ -19,7 +19,6 @@ const App = () => {
       setSigningIn(false);
       return
     }
-
     axios.post("/auth/me", null, {
       headers: {
         Authorization: `Bearer ${token}`

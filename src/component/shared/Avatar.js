@@ -6,7 +6,7 @@ export const Avatar = (props) => {
     const { src, size } = props;
     const sizeMap = {
         xl: 100,
-        lg: 45,
+        lg: 50,
         md: 30,
         sm: 25,
         xs: 15

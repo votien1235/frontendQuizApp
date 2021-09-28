@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Question from "../../Question/Question";
+import Question from "../../Question.js/Question";
 import { CircularProgress } from "@material-ui/core";
 import { useHistory } from "react-router";
 
@@ -32,7 +32,7 @@ export const Quiz = ({ user, questions, score, setScore, setQuestions, setAuthQu
 
     return (
         <div className="quizBody">
-            <span className="subtitle">Welcome: {user.displayName}</span>
+            <span className="subtitle">Welcome: {user.displayName ? user.displayName : user.username}</span>
 
             {questions ? (
                 <>
